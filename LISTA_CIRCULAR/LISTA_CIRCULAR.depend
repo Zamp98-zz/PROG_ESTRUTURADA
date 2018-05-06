@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1525549904 source:c:\users\arthu\desktop\lista_circular\source.c
+	"source.h"
+
+1525535623 c:\users\arthu\desktop\lista_circular\source.h
+	<stdio.h>
+	<stdlib.h>
+
+1525548628 source:c:\users\arthu\desktop\lista_circular\main.c
+	"source.h"
+
+1525567068 source:c:\users\arthu\documents\faculdade\programação estruturada\lista_circular\main.c
+	"source.h"
+
+1525535623 c:\users\arthu\documents\faculdade\programação estruturada\lista_circular\source.h
+	<stdio.h>
+	<stdlib.h>
+
+1525567365 source:c:\users\arthu\documents\faculdade\programação estruturada\lista_circular\source.c
+	"source.h"
+
