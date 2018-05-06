@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1525496707 source:c:\users\arthu\desktop\fila_alunos\source.c
+	"source.h"
+
+1525495611 c:\users\arthu\desktop\fila_alunos\source.h
+	<stdio.h>
+	<stdlib.h>
+
+1525495650 source:c:\users\arthu\desktop\fila_alunos\main.c
+	<stdio.h>
+	<stdlib.h>
+	"source.h"
+
