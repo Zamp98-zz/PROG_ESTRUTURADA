@@ -15,5 +15,9 @@ int show();
 int finish();
 int apaga();
 int show();
+int ler();
+int escreve();
+
+
 
 #endif // SOURCE_H_INCLUDED
