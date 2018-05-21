@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1526863503 source:c:\users\arthu\desktop\ldecpdlek\main.c
+	"source.h"
+
+1526826117 c:\users\arthu\desktop\ldecpdlek\source.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1526869420 source:c:\users\arthu\desktop\ldecpdlek\source.c
+	"source.h"
+
+1526863504 source:c:\users\arthur\desktop\ldecpdlek\main.c
+	"source.h"
+
+1526826118 c:\users\arthur\desktop\ldecpdlek\source.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1526869422 source:c:\users\arthur\desktop\ldecpdlek\source.c
+	"source.h"
+
