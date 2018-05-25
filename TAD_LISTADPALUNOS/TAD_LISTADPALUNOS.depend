@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1527207002 source:c:\users\arthu\desktop\tad_listadpalunos\source.c
+	"source.h"
+
+1527194885 c:\users\arthu\desktop\tad_listadpalunos\source.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1527203069 source:c:\users\arthu\desktop\tad_listadpalunos\main.c
+	"source.h"
+
