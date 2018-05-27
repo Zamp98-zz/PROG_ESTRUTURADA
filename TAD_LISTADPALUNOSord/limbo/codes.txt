@@ -1,0 +1,152 @@
+/*void ordena(Node *novo)
+{
+    Node *aux = inicio;
+    while(aux!=NULL)
+    {
+        if(strcmp(novo->a.nome, aux->a.nome)<0)
+        {
+            ///coloca na frente no inicio;
+            if(aux->anterior == NULL)
+            {
+                insereInicio(novo,aux);
+            }
+            ///coloca na frente se n for no inicio
+            else
+            {
+                insereMeioAntes(novo, aux);
+            }
+        }
+        ///caso o nome seja igual
+        ///o criterio eh pela idade
+        else if(strcmp(novo->a.nome, aux->a.nome) == 0)
+        {
+            int n = novo->a.idade; int a = aux->a.idade;
+            if(n<a)///coloca na frente
+            {
+                if(aux->anterior == NULL)///coloca na frente no inicio
+                {
+                    insereInicio(novo, aux);
+                }
+                else
+                {
+                    insereMeioAntes(novo, aux);
+                }
+            }
+            else
+            {
+                if(aux->proximo == NULL)
+                {
+                    insereFim(novo, aux);
+                }
+                else
+                {
+                    insereMeioPosterior(novo, aux);
+                }
+            }
+        }
+        else
+        {
+            if(aux->proximo == NULL)
+            {
+                insereFim(novo, aux);
+            }
+            else
+            {
+                insereMeioPosterior(novo, aux);
+            }
+        }
+        aux = aux->proximo;
+    }
+}*/
+/*Node *primeiro(){
+    Node *aux = corrente;
+    if (corrente == NULL){
+        return NULL;
+        }
+    while(aux->anterior!=NULL){
+        aux = aux->anterior;
+    }
+    return aux;
+}*/
+
+/*if(posicao == NULL)
+    {
+        insereFim(novo, posicao);
+    }
+    else
+    {
+        if(posicao->anterior == NULL)
+        {
+            insereInicio(novo, posicao);
+        }
+        else if(posicao->proximo == NULL)
+        {
+            insereFim(novo, posicao);
+        }
+        else if((posicao->anterior !=NULL) &&  (posicao->proximo != NULL))
+        {
+
+        }
+    }*/
+
+/*
+void insereNode(Node *novo, Node *posicao, int pos)
+{
+    if(posicao->anterior == NULL)
+    {
+
+        insereInicio(novo, posicao);
+    }
+    else if(posicao->proximo == NULL)
+    {
+        if(pos == antes)
+        {
+            insereMeioAntes(novo, posicao);
+        }
+        else
+        {
+            insereFim(novo, posicao);
+        }
+
+    }
+    else
+    {
+        if(pos == antes)
+        {
+            insereMeioAntes(novo, posicao);
+        }
+        else
+        {
+            insereMeioPosterior(novo, posicao);
+        }
+    }
+
+}
+
+void ordena(Node *novo)
+{
+    ///terei q percorrer a lista toda pra guardar a posição certa
+    Node *aux = inicio;
+    Node *posicao = NULL; ///eh a posição que o node deve entrar na lista
+    while(aux != NULL)
+    {
+        if(strcmp(novo->a.nome,aux->a.nome)<0)
+        {
+            posicao = aux;
+            insereNode(novo,posicao, antes);
+            break;
+        }
+        else if(strcmp(novo->a.nome,aux->a.nome) == 0)
+        {
+            if(novo->a.idade<=aux->a.idade)
+            {
+                posicao = aux;
+                insereNode(novo,posicao, antes);
+                break;
+            }
+        }
+        aux = aux->proximo;
+    }
+    insereNode(novo, posicao, depois);
+}
+*/
