@@ -15,6 +15,7 @@ int inicializa(){
 
 void insereInicio(Node *novo, Node *aux)
 {
+    printf("insereInicio");getch();
     novo->proximo = aux;
     aux->anterior = novo;
     inicio = novo;
@@ -22,6 +23,7 @@ void insereInicio(Node *novo, Node *aux)
 
 void insereFim(Node *novo, Node *aux)
 {
+    printf("insereFim");getch();
     novo->anterior = aux;
     aux->proximo = novo;
     fim = novo;
@@ -29,6 +31,7 @@ void insereFim(Node *novo, Node *aux)
 
 void insereMeioAntes(Node *novo, Node *aux)
 {
+    printf("insereMeioAntes");getch();
     printf("oi ");printf("%s",aux->a.nome); getch();
     novo->anterior = aux->anterior;
     novo->proximo = aux;
@@ -38,6 +41,7 @@ void insereMeioAntes(Node *novo, Node *aux)
 
 void insereMeioPosterior(Node *novo, Node *aux)
 {
+    printf("insereMeioPosterior");getch();
     novo->proximo = aux->proximo;
     novo->anterior = aux;
     aux->proximo->anterior = novo;
@@ -84,19 +88,42 @@ void ordena(Node *novo)
             }
             else
             {
-                printf("oi");getch();
-                while(novo->a.idade>=aux->proximo->a.idade)
+                if(aux==fim)
                 {
-                    printf("oi");getch();
-                    aux = aux->proximo;
+                    printf("oi"); getch();
+                    posicao = aux;
+                    referencial = depois;
+                    break;
                 }
-                posicao = aux; referencial = depois;
+                while(novo->a.idade==aux->a.idade)
+                {
+                    printf("a");getch();
+                    if(aux->proximo == fim){
+                        posicao = aux->proximo; referencial = depois;
+                        break;}
+                    else
+                    {
+                        break;
+                    }
+                }
+                while(novo->a.idade>aux->a.idade)
+                {
+                    printf("a");getch();
+                    if(aux->proximo == fim)
+                        break;
+                    else
+                    {
+                        aux = aux->proximo;
+                    }
+                }
+                posicao = aux->proximo; referencial = depois;
                 break;
             }
         }
         else
         {
-           aux = aux->proximo;
+            if(aux == fim)break;
+            aux = aux->proximo;
         }
         posicao = aux;
     }
@@ -203,7 +230,23 @@ int nodeProximo(){
         return TRUE;
     }
 }
-
+int carregaAluno(Aluno a){
+    Node *novo = (Node*)malloc(sizeof(Node));
+    novo->a = a;
+    novo->proximo = novo->anterior = NULL;
+    //Node *aux = primeiro();
+    if(corrente == NULL){
+        fim = inicio = novo;
+        corrente = novo;
+    }
+    ///quero botar no inicio da lista
+    else{
+        novo->proximo = inicio;
+        inicio->anterior = novo;
+        inicio = novo;
+    }
+    return TRUE;
+}
 int carregaPersistencia()
 {
     FILE *arquivo;
@@ -212,8 +255,6 @@ int carregaPersistencia()
     {
         return FALSE;
     }
-    Node *aux = (Node *)malloc(sizeof(Node));
-
     while(1)
         {
             Aluno a;
@@ -223,7 +264,7 @@ int carregaPersistencia()
             {
                 break;
             }
-            insereAluno(a);
+            carregaAluno(a);
         }
     return TRUE;
 }
