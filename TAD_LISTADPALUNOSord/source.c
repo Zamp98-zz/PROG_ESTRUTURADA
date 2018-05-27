@@ -77,13 +77,19 @@ void ordena(Node *novo)
         }
         else if(strcmp(novo->a.nome, aux->a.nome) == 0)
         {
-            if(novo->a.idade<=aux->a.idade)
+            if(novo->a.idade<aux->a.idade)
             {
                 posicao = aux; referencial = antes;
                 break;
             }
             else
             {
+                printf("oi");getch();
+                while(novo->a.idade>=aux->proximo->a.idade)
+                {
+                    printf("oi");getch();
+                    aux = aux->proximo;
+                }
                 posicao = aux; referencial = depois;
                 break;
             }
