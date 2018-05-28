@@ -150,3 +150,39 @@ void ordena(Node *novo)
     insereNode(novo, posicao, depois);
 }
 */
+/*void ordenaNome(Node *novo, Node *posicao)
+{
+    printf("oie");getch();
+    Node *aux = posicao;
+    printf("DEBUG: %s %s",novo->a.nome, aux->a.nome); getch();
+    while(aux->a.nome == novo->a.nome)
+        {
+
+            if(novo->a.idade == aux->a.idade)
+            {
+                if((aux == inicio)&&(aux == fim))
+                {
+                    insereFim(novo, posicao);
+                }
+                else
+                {
+                    insereMeioAntes(novo, posicao);
+                }
+                return;
+            }
+            else if(novo->a.idade < aux->a.idade)
+            {
+                if((aux == inicio))
+                {
+                    insereInicio(novo, posicao);
+                }
+                else
+                {
+                    insereMeioAntes(novo, posicao);
+                }return;
+            }
+            aux = aux->proximo;
+        }
+        insere(novo, posicao, r);
+        return;
+}*/

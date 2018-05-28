@@ -1,6 +1,7 @@
 #include "source.h"
 #define antes 2
 #define depois 3
+int r = 0;
 typedef struct node{
     Aluno a;
     struct node *proximo;
@@ -18,7 +19,7 @@ void insereInicio(Node *novo, Node *aux)
     printf("insereInicio");getch();
     novo->proximo = aux;
     aux->anterior = novo;
-    inicio = novo;
+    inicio = novo; return;
 }
 
 void insereFim(Node *novo, Node *aux)
@@ -26,17 +27,16 @@ void insereFim(Node *novo, Node *aux)
     printf("insereFim");getch();
     novo->anterior = aux;
     aux->proximo = novo;
-    fim = novo;
+    fim = novo; return;
 }
 
 void insereMeioAntes(Node *novo, Node *aux)
 {
     printf("insereMeioAntes");getch();
-    printf("oi ");printf("%s",aux->a.nome); getch();
     novo->anterior = aux->anterior;
     novo->proximo = aux;
     aux->anterior->proximo = novo;
-    aux->anterior = novo;
+    aux->anterior = novo; return;
 }
 
 void insereMeioPosterior(Node *novo, Node *aux)
@@ -45,89 +45,124 @@ void insereMeioPosterior(Node *novo, Node *aux)
     novo->proximo = aux->proximo;
     novo->anterior = aux;
     aux->proximo->anterior = novo;
-    aux->proximo = novo;
+    aux->proximo = novo; return;
 }
 
 void insere(Node *novo, Node *posicao, int ref)
 {
-    if((posicao->anterior == NULL) && (ref == antes))
+
+    if((posicao->proximo == NULL) && (ref == antes))
     {
+        if((posicao->anterior == NULL) && (ref == antes))
+        {
+            insereInicio(novo, posicao);
+        }
+        else
+        {
+
+            insereMeioAntes(novo, posicao);
+        }
+    }
+    else if((posicao->proximo == NULL) && (ref == depois))
+    {
+        insereFim(novo,posicao);
+    }
+    else if((posicao->anterior == NULL) && (ref == antes))
+    {
+        printf("oi");getch();
         insereInicio(novo, posicao);
+    }
+    else if((posicao->anterior == NULL) && (ref == depois))
+    {
+        if((posicao->proximo == NULL) && (ref == depois))
+        {
+            insereFim(novo, posicao);
+        }
+        else
+        {
+            insereMeioPosterior(novo, posicao);
+        }
+    }
+    else if((posicao->proximo != NULL) && (ref == antes))
+    {
+        if((posicao->anterior == NULL) && (ref == antes))
+        {
+            insereInicio(novo , posicao);
+        }
+        else
+        {
+            insereMeioAntes(novo, posicao);
+        }
+
+    }
+    else if((posicao->proximo == NULL) && (ref == depois))
+    {
+        insereFim(novo, posicao);
+    }
+    else if((posicao->anterior != NULL) && (ref == depois))
+    {
+        if((posicao->proximo == NULL) && (ref == depois))
+        {
+            insereFim(novo, posicao);
+        }
+        else
+        {
+            insereMeioPosterior(novo, posicao);
+        }
     }
     else if((posicao->anterior != NULL) && (ref == antes))
     {
         insereMeioAntes(novo, posicao);
     }
-    else if(posicao->proximo == NULL)
-    {
-        insereFim(novo, posicao);
-    }
-    else
-    {
-        insereMeioPosterior(novo, posicao);
-    }
+    return;
 }
 
 void ordena(Node *novo)
 {
     Node *aux = inicio;
-    Node *posicao = NULL; int referencial;
-    while(aux != NULL)
+    Node *posicao = aux; int referencial = 0;//armazena a melhor posição para o node entrar
+    Node *aux1 = NULL;
+    while(aux!=NULL)//enquanto o ponteiro aux não chegar no final
     {
-        if(strcmp(novo->a.nome, aux->a.nome)<0)
+        ///se o novo for menor alfabeticamente
+        if(strcmp(novo->a.nome,aux->a.nome)<0)
         {
-            posicao = aux; referencial = antes;
+
+            insere(novo, aux, antes);
             break;
         }
-        else if(strcmp(novo->a.nome, aux->a.nome) == 0)
+        else if(strcmp(novo->a.nome,aux->a.nome) == 0)
         {
-            if(novo->a.idade<aux->a.idade)
+            while(strcmp(novo->a.nome,aux->a.nome) == 0)
             {
-                posicao = aux; referencial = antes;
-                break;
-            }
-            else
-            {
-                if(aux==fim)
+                if(novo->a.idade<=aux->a.idade)
                 {
-                    printf("oi"); getch();
-                    posicao = aux;
-                    referencial = depois;
-                    break;
+                    printf("queisso");getch();
+                    insere(novo, aux, antes); break;
                 }
-                while(novo->a.idade==aux->a.idade)
+                else
                 {
-                    printf("a");getch();
-                    if(aux->proximo == fim){
-                        posicao = aux->proximo; referencial = depois;
-                        break;}
-                    else
+                    if(aux == fim)
                     {
-                        break;
+                        insere(novo, aux, depois); break;
                     }
                 }
-                while(novo->a.idade>aux->a.idade)
-                {
-                    printf("a");getch();
-                    if(aux->proximo == fim)
-                        break;
-                    else
-                    {
-                        aux = aux->proximo;
-                    }
-                }
-                posicao = aux->proximo; referencial = depois;
-                break;
+                aux = aux->proximo;
             }
+            return;
         }
-        else
+        else if(strcmp(novo->a.nome,aux->a.nome)>0)
         {
-            if(aux == fim)break;
+
+            if(aux == fim)
+                {
+                    insere(novo, aux, depois);break;
+                }
             aux = aux->proximo;
         }
-        posicao = aux;
+
     }
-    insere(novo, posicao, referencial);
+    return;
 }
 
 int insereAluno(Aluno a)
